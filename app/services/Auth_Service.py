@@ -45,13 +45,6 @@ class AuthService:
         encoded_jwt = AuthJWT().create_access_token(subject=data["sub"])
         return encoded_jwt
     
-    def validate_token(self):
-        try:
-            self.auth.jwt_required()
-            return self.auth.get_jwt_subject()
-        except Exception as e:
-            raise HTTPException(status_code=401, detail="Token inválido o expirado")
-    
     def validate_token(auth: AuthJWT) -> dict:
         auth.jwt_required()
         return auth.get_jwt_subject()
