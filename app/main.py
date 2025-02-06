@@ -4,6 +4,7 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 from contextlib import asynccontextmanager
 
 from app.security import auth
+from app.api.v1.endpoints import user
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,7 +24,8 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(auth.router)
+app.include_router(auth.router, prefix="/auth")
+app.include_router(user.router, prefix="/user")
 
 @app.exception_handler(AuthJWTException)
 def authjwt_exception_handler(request: Request, exc: AuthJWTException):
