@@ -24,7 +24,7 @@ def get_users(session: Session = Depends(get_session), auth: AuthJWT = Depends()
     if users:
         return [UserResponse.from_orm(user) for user in users]
     else:
-        raise HTTPException(status_code=400, detail="Error getting users")
+        raise HTTPException(status_code=404, detail="No users found")
     
 @router.get("/{id}")
 def get_user_by_id(id: int, session: Session = Depends(get_session), auth: AuthJWT = Depends()):
