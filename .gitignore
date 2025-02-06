@@ -163,4 +163,3 @@ cython_debug/
 # Ignore documents
 *.xlsx
 *.csv
-*.txt
