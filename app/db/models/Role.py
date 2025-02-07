@@ -5,7 +5,7 @@ from app.db.Database_Connection_ORM import DatabaseConnectionORM
 db_connection = DatabaseConnectionORM()
 Base = db_connection.get_base()
 
-class Rol(Base):
+class Role(Base):
     __tablename__ = 'role'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
