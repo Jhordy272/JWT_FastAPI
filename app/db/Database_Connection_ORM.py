@@ -20,7 +20,7 @@ class DatabaseConnectionORM:
             connect_args = {
                 'client_encoding': 'utf8',
                 'options': '-c search_path=public',
-                'application_name': 'MediosMagneticos'
+                'application_name': 'JWT_FastAPI'
             }
             
             self.engine = create_engine(
